@@ -1,0 +1,948 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/29/2018 8:03:41 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LSERVER4T"
+  DTS:CreatorName="TERMINAL\1cadmin"
+  DTS:DTSID="{D71991E9-72C7-4B7C-BD16-5C90BF1D269A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.30"
+  DTS:LocaleID="1049"
+  DTS:ObjectName="обновление FinOLAPL"
+  DTS:PackageType="5"
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{E1D477A2-DAB9-41A7-8D92-C98A6250A8DB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LSERVER4T.FinOLAPL.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9931CF9D-A548-48EC-A4BE-5E2BDEF98AD8}"
+      DTS:ObjectName="LSERVER4T.FinOLAPL.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LSERVER4T;User ID=sa;Initial Catalog=FinOLAPL;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2IKZIml7d02N6IacCwIgKAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAC6Fk5TWSTZlW3f/7vgBd2vAAAAAASAAACgAAAAEAAAANPXdUVLqDF6XhMg4/qtII0YAAAAJlg94rnJUEtilaYeYrqRBdwhnF1JPehNFAAAAHNMB7Mx++3XINdkjJjF3kTQq0ny</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LSERVER4T.FinOLAPL.sa 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F841308F-4FBC-4558-8BFB-D6F9C876619B}"
+      DTS:ObjectName="LSERVER4T.FinOLAPL.sa 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LSERVER4T;User ID=sa;Initial Catalog=FinOLAPL;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2IKZIml7d02N6IacCwIgKAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADW3doU8rGPKz6zPbzmTNBlAAAAAASAAACgAAAAEAAAAHwFJxFgXk9um9b5Ijgnp9UYAAAAQUqyw/xpPVKryGWfBlubypLrxNLTihe9FAAAABxsNr5Bg8CjfTsoGPNKv88emnNb</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LSERVER63.s3_conv_full.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{CE665372-E49C-4342-89AF-1546D5985150}"
+      DTS:ObjectName="LSERVER63.s3_conv_full.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LSERVER63;User ID=sa;Initial Catalog=s3_conv_full;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2IKZIml7d02N6IacCwIgKAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAacbcKRzw93z5RZTR6TWcAAAAAAASAAACgAAAAEAAAAIRCzhxgZJq1Klq9xGHrNCkQAAAANV2YxOSVbdBre/bidVi4GRQAAAA9PTIar7ncjkA14oLay5swrSlqjg</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[s3]"
+      DTS:CreationName="SMTP"
+      DTS:DTSID="{F48D54F3-74AA-4A69-9B52-04B8D1D2C0BD}"
+      DTS:ObjectName="s3">
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=mail.terminal.lft;UseWindowsAuthentication=True;EnableSsl=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ОбновлениеFINOLAPL.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{3ED36470-54F7-4200-8C46-2365191B62D0}"
+      DTS:ObjectName="ОбновлениеFINOLAPL.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\1cadmin\Desktop\ОбновлениеFINOLAPL.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ОбновлениеFINOLAPL.sql 1]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{F342164B-BD10-44B8-833E-8A361285941C}"
+      DTS:ObjectName="ОбновлениеFINOLAPL.sql 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\QueryOLAP\ОбновлениеFINOLAPL.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ОбновлениеFINOLAPL_old.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{BEA14060-FAC5-498A-93E3-AE8157369015}"
+      DTS:ObjectName="ОбновлениеFINOLAPL_old.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\1cadmin\Desktop\ОбновлениеFINOLAPL_old.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Задача потока данных"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Задача потока данных"
+      DTS:DTSID="{5A0C1BB7-DA01-45F8-BE5A-AC0CE0E53C32}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Задача потока данных"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Назначение &quot;OLE DB&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;4"
+              description="Назначение &quot;OLE DB&quot;"
+              name="Lserver4t_FinOLAPL_FinFactsForA"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowset">[dbo].[FinFactsForA]</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Команда SQL для выполнения."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает кодовую страницу столбца, используемую, когда недоступны сведения о кодовой странице из источника данных."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Вызывает безусловное использование значение свойства DefaultCodePage при описании символьных данных."
+                  name="AlwaysUseDefaultCodePage">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает используемый режим доступа к базе данных."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Указывает, должны ли значения в столбцах идентификаторов копироваться в назначение. Если свойство имеет значение false, значения в столбцах идентификаторов будут созданы автоматически в месте назначения. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Указывает, будут ли в назначение вставляться значения NULL для столбцов, содержащих их. Значение false показывает, что если столбец имеет значение NULL, то в назначение будет вставлено его значение по умолчанию. Применяется только в случае, если включена быстрая загрузка."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Задает параметры быстрой загрузки. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Задает, когда выдаются сообщения о фиксации транзакции в ходе вставки данных. Значение 0 задает, что по окончании вставки данных будет выдано одно сообщение о фиксации транзакции. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LSERVER4T.FinOLAPL.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[LSERVER4T.FinOLAPL.sa]"
+                  description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;]"
+                  errorOrTruncationOperation="Вставить"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Вход назначения &quot;OLE DB&quot;">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Filter]"
+                      cachedCodepage="1251"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Filter"
+                      externalMetadataColumnId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Filter]"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Filter]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Period]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Period"
+                      externalMetadataColumnId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Period]"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Period]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[StatID]"
+                      cachedCodepage="1251"
+                      cachedDataType="str"
+                      cachedLength="13"
+                      cachedName="StatID"
+                      externalMetadataColumnId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[StatID]"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[StatID]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[RazdID]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="RazdID"
+                      externalMetadataColumnId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[RazdID]"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[RazdID]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Result]"
+                      cachedDataType="numeric"
+                      cachedName="Result"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Result]"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Result]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Schet]"
+                      cachedCodepage="1251"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="Schet"
+                      externalMetadataColumnId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Schet]"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Schet]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Filter]"
+                      codePage="1251"
+                      dataType="str"
+                      length="5"
+                      name="Filter" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Period]"
+                      dataType="dbTimeStamp"
+                      name="Period" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[StatID]"
+                      codePage="1251"
+                      dataType="str"
+                      length="13"
+                      name="StatID" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[RazdID]"
+                      dataType="bytes"
+                      length="16"
+                      name="RazdID" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Result]"
+                      dataType="numeric"
+                      name="Result"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Schet]"
+                      codePage="1251"
+                      dataType="str"
+                      length="20"
+                      name="Schet" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Вывод ошибок назначения &quot;OLE DB&quot;"
+                  synchronousInputId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Источник &quot;OLE DB&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;7"
+              description="Источник &quot;OLE DB&quot;"
+              name="Lserver63_s3_conv_full_FinFactsForAL"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowset">[dbo].[FinFactsForAL]</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Команда SQL для выполнения."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Переменная, содержащая команду SQL для выполнения."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает кодовую страницу столбца, используемую, когда недоступны сведения о кодовой странице из источника данных."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Вызывает безусловное использование значение свойства DefaultCodePage при описании символьных данных."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает используемый режим доступа к базе данных."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Сопоставления между параметрами в команде SQL и переменными."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LSERVER63.s3_conv_full.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[LSERVER63.s3_conv_full.sa]"
+                  description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;]"
+                  name="Выход источника &quot;OLE DB&quot;">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Filter]"
+                      codePage="1251"
+                      dataType="str"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Filter]"
+                      length="5"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Filter]"
+                      name="Filter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Period]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Period]"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Period]"
+                      name="Period"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[StatID]"
+                      codePage="1251"
+                      dataType="str"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[StatID]"
+                      length="13"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[StatID]"
+                      name="StatID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[RazdID]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[RazdID]"
+                      length="16"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[RazdID]"
+                      name="RazdID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Result]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Result]"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Result]"
+                      name="Result"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Schet]"
+                      codePage="1251"
+                      dataType="str"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Schet]"
+                      length="20"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Schet]"
+                      name="Schet"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Filter]"
+                      codePage="1251"
+                      dataType="str"
+                      length="5"
+                      name="Filter" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Period]"
+                      dataType="dbTimeStamp"
+                      name="Period" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[StatID]"
+                      codePage="1251"
+                      dataType="str"
+                      length="13"
+                      name="StatID" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[RazdID]"
+                      dataType="bytes"
+                      length="16"
+                      name="RazdID" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Result]"
+                      dataType="numeric"
+                      name="Result"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Schet]"
+                      codePage="1251"
+                      dataType="str"
+                      length="20"
+                      name="Schet" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;]"
+                  isErrorOut="true"
+                  name="Вывод ошибок источника &quot;OLE DB&quot;">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Filter]"
+                      codePage="1251"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Filter]"
+                      name="Filter" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Period]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Period]"
+                      name="Period" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[StatID]"
+                      codePage="1251"
+                      dataType="str"
+                      length="13"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[StatID]"
+                      name="StatID" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[RazdID]"
+                      dataType="bytes"
+                      length="16"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[RazdID]"
+                      name="RazdID" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Result]"
+                      dataType="numeric"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Result]"
+                      name="Result"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Schet]"
+                      codePage="1251"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Schet]"
+                      name="Schet" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Задача потока данных.Paths[Выход источника &quot;OLE DB&quot;]"
+              endId="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA.Inputs[Вход назначения &quot;OLE DB&quot;]"
+              name="Выход источника &quot;OLE DB&quot;"
+              startId="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL.Outputs[Выход источника &quot;OLE DB&quot;]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Обновление FinFactsL"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Обновление FinFactsL "
+      DTS:DTSID="{D1C8EAAE-3787-4958-9820-A0994354719E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Обновление FinFactsL"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE665372-E49C-4342-89AF-1546D5985150}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="ОбновлениеFINOLAPL.sql 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Обновление статей в OLAP Л-Фото"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Обновление статей в OLAP Л-Фото"
+      DTS:DTSID="{A97CBCD0-A1F3-492E-B61D-0C9EFDBD8E21}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Обновление статей в OLAP Л-Фото"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9931CF9D-A548-48EC-A4BE-5E2BDEF98AD8}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="DECLARE @nullreference binary(16), @SND binary(16), @SNDR binary(16), &#xA;@SKD binary(16), @SKDR binary(16), @SNK binary(16), @SNKR binary(16), &#xA;&#xA;@SKK binary(16), @SKKR binary(16), @DO binary(16), @KO binary(16), &#xA;@KorDO binary(16), @KorKO binary(16), @DOKO binary(16), @KorDOKorKO &#xA;binary(16)&#xA;SET              @nullreference = 0x00000000000000000000000000000000&#xA;SET              @SND = 0x99780BAE4D539E634BE54556157DB615&#xA;SET              @SNDR = 0x9BA678A8868ED49B424778DD639E7B10&#xA;SET              @SKD = 0x8A798FB014192D244CC0389C7E611888&#xA;SET              @SKDR = 0x97F60F4278F163D14C7FB20CB07D7602&#xA;SET              @SNK = 0x8380467117DD2342482313E95CDA4986&#xA;SET              @SNKR = 0x88FAA58C64EBAB174CA900B177F3EE45&#xA;SET              @SKK = 0xB933B5562841A7AF464A361820495CD2&#xA;SET              @SKKR = 0xA48CCC724A3F8F7E40988DE7F61CD1F0&#xA;SET              @DO = 0xB84E3CE7F9807BC847AF892B4E35D1A3&#xA;SET &#xA;             @KO = 0x9E77EE1C962568E2435A90B4FB67A5A6&#xA;SET  &#xA;            @KorDO = 0x81D1BF13D74BDCD143449E58D05C548D&#xA;SET &#xA;             @KorKO = 0x992B04D91757D8664C591B671C764CAC&#xA;SET &#xA;             @DOKO = 0xB58890F01ABE784041FA0B3A0741CCD6&#xA;SET &#xA;             @KorDOKorKO = 0xB1E53E1DD11B08844D70E829C131AD4B&#xA;                          &#xA;DELETE &#xA;FROM FinStats&#xA;                                             &#xA;         INSERT      &#xA;                                     &#xA;                  &#xA;INTO            FinStats&#xA;                                  &#xA;                                                &#xA;SELECT     ISNULL(ФинСтатьиВОтчетах_1.Код, '00000000') + '00000' &#xA;ParentID, ФинСтатьиВОтчетах.Код + '00000' ID, &#xA;            &#xA;                                                            &#xA;                                  ФинСтатьиВОтчетах.Наименование &#xA;Descr, @nullreference schet, ФинСтатьиВОтчетах.КодОтчета otchet, &#xA;&#xA;                                                          &#xA;                                                CASE LTRIM(RTRIM(ФинСтатьиВОтчетах.Знак)) &#xA;WHEN '' THEN '+' ELSE ФинСтатьиВОтчетах.Знак END&#xA;          &#xA;                                                            &#xA;             &#xA;FROM         LSERVER63.s3_conv_full.dbo.Справочник_ФинСтатьиВОтчетах &#xA;ФинСтатьиВОтчетах LEFT &#xA;JOIN&#xA;                                                      &#xA;                                                    LSERVER63.s3_conv_full.dbo.Справочник_ФинСтатьиВОтчетах &#xA;ФинСтатьиВОтчетах_1 ON &#xA;                                   &#xA;                                                            &#xA;           ФинСтатьиВОтчетах_1.Ссылка = ФинСтатьиВОтчетах.Родитель&#xA;                                                            &#xA;                       &#xA;WHERE     ФинСтатьиВОтчетах.ПометкаУдаления = 0&#xA;UNION&#xA;SELECT &#xA;    ФинСтатьиВОтчетах.Код + '00000' ParentID, ФинСтатьиВОтчетах.Код &#xA;+ RIGHT('0000' + CAST(ФинКоррСтатейВОтчетах.Код AS VARCHAR(5)), &#xA;5) ID, &#xA;                      CASE WHEN ФинКоррСтатейВОтчетах.Знак &#xA;&lt; 0 THEN '-' ELSE '' END + CASE ФинКоррСтатейВОтчетах.ВидСуммы &#xA;WHEN @SND THEN 'СНД ' WHEN&#xA;                       @SNDR THEN &#xA;'СНДР ' WHEN @SKD THEN 'СКД ' WHEN @SKDR THEN 'СКДР ' WHEN @SNK &#xA;THEN 'СНК ' WHEN @SNKR THEN 'СНКР ' WHEN @SKK&#xA;             &#xA;          THEN 'СКК ' WHEN @SKKR THEN 'СККР ' WHEN @DO THEN &#xA;'ДО ' WHEN @KO THEN 'КО ' WHEN @KorDO THEN 'КорДО ' WHEN @KorKO &#xA;THEN 'КорКО '&#xA;                       WHEN @DOKO THEN 'ДО-КО &#xA;&#xA;&#xA;' WHEN @KorDOKorKO THEN 'КорДО-КорКО ' ELSE '' END + RTRIM(LTRIM(ПланСчетов_Управленческий.Код))&#xA;                       + '-' + LTRIM(RTRIM(ISNULL(ПланСчетов_Управленческий_К.Код, &#xA;''))) + ' ' + LTRIM(RTRIM(ПланСчетов_Управленческий.Наименование)) &#xA;Descr, &#xA;                      ФинКоррСтатейВОтчетах.Счет schet,&#xA;                          (SELECT     КодОтчета&#xA;           &#xA;                 &#xA;FROM          LSERVER63.s3_conv_full.dbo.Справочник_ФинСтатьиВОтчетах &#xA;ФинСтатьиВОтчетах&#xA;                            &#xA;WHERE      ФинСтатьиВОтчетах.Ссылка = ФинКоррСтатейВОтчетах.Владелец) &#xA;otchet, '+'&#xA;FROM         LSERVER63.s3_conv_full.dbo.Справочник_ФинКоррСтатейВОтчетах &#xA;ФинКоррСтатейВОтчетах INNER &#xA;JOIN&#xA;                      LSERVER63.s3_conv_full.dbo.Справочник_ФинСтатьиВОтчетах &#xA;ФинСтатьиВОтчетах ON &#xA;                      ФинКоррСтатейВОтчетах.Владелец &#xA;= ФинСтатьиВОтчетах.Ссылка INNER &#xA;JOIN&#xA;                      LSERVER63.s3_conv_full.dbo.Перечисление_ФинВидыИтогов &#xA;ФинВидыИтогов ON &#xA;                      ФинВидыИтогов.Ссылка &#xA;= ФинКоррСтатейВОтчетах.ВидСуммы LEFT &#xA;JOIN&#xA;                      LSERVER63.s3_conv_full.dbo.ПланСчетов_Управленческий &#xA;ПланСчетов_Управленческий ON &#xA;                      ПланСчетов_Управленческий.Ссылка &#xA;= ФинКоррСтатейВОтчетах.Счет LEFT &#xA;JOIN&#xA;                      LSERVER63.s3_conv_full.dbo.ПланСчетов_Управленческий &#xA;ПланСчетов_Управленческий_К ON &#xA;                      ПланСчетов_Управленческий_К.Ссылка &#xA;= ФинКоррСтатейВОтчетах.КорСчет&#xA;WHERE     ФинКоррСтатейВОтчетах.ПометкаУдаления &#xA;= 0 AND ФинКоррСтатейВОтчетах.Активен = 1&#xA;ORDER BY ParentID&#xA;                          &#xA;DELETE &#xA;FROM FinPeriods&#xA;                                           &#xA;           INSERT      &#xA;                                   &#xA;                    &#xA;INTO            FinPeriods&#xA;                                &#xA;                                                  &#xA;SELECT     DATEADD(yy, - 2000, ФинПериодыОЛАП.начПериода), DATEADD(yy, &#xA;- 2000, &#xA;                                                  &#xA;                                                        ФинПериодыОЛАП.конПериода), &#xA;ФинПериодыОЛАП.Наименование, &#xA;                             &#xA;                                                            &#xA;                 ФинПериодыОЛАП.флОбновлять&#xA;               &#xA;                                                            &#xA;        &#xA;FROM         LSERVER63.s3_conv_full.dbo.Справочник_ФинПериодыОЛАП &#xA;ФинПериодыОЛАП&#xA;                                            &#xA;                                       &#xA;WHERE     ФинПериодыОЛАП.ПометкаУдаления = 0&#xA;              &#xA;                                                            &#xA;                                    &#xA;DELETE &#xA;FROM FinScena&#xA;                                             &#xA;                                                            &#xA;      &#xA;WHERE     ID &lt;&gt; @nullreference&#xA;                            &#xA;                                                            &#xA;                                                  INSERT    &#xA;  &#xA;                                                        &#xA;                                                            &#xA;                       &#xA;INTO            FinScena&#xA;                                  &#xA;                                                            &#xA;                                                            &#xA;            &#xA;SELECT     ФинСценарии.Ссылка, ФинСценарии.Родитель, ФинСценарии.Код, &#xA;&#xA;                                                          &#xA;                                                            &#xA;                                                            &#xA;            ФинСценарии.ПометкаУдаления&#xA;                   &#xA;                                                            &#xA;                                                            &#xA;                            &#xA;FROM         LSERVER63.s3_conv_full.dbo.Справочник_ФинСценарии &#xA;ФинСценарии" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\отправить на почту Неудачно"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Задача &quot;Отправка почты&quot;"
+      DTS:DTSID="{3e82a9f4-2156-4b46-b89d-4bed3cac4e89}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="отправить на почту Неудачно"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{F48D54F3-74AA-4A69-9B52-04B8D1D2C0BD}"
+          SendMailTask:From="Rassilka1Cv8@s3.ru"
+          SendMailTask:To="1CSupport2@s3.ru"
+          SendMailTask:Subject="Ошибка обновления данных FINOLAPL"
+          SendMailTask:MessageSource="Обновление FinOLAPL at Lserver4T encountered with problems" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\отправить на почту Успешно"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Задача &quot;Отправка почты&quot;"
+      DTS:DTSID="{12CCDA8C-F08A-440A-95DB-00A5EFA9EFDD}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="отправить на почту Успешно"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{F48D54F3-74AA-4A69-9B52-04B8D1D2C0BD}"
+          SendMailTask:From="Rassilka1Cv8@s3.ru"
+          SendMailTask:To="1CSupport2@s3.ru"
+          SendMailTask:Subject="Успешно обновили данные FINOLAPL"
+          SendMailTask:MessageSource="All data for FinOLAPL at Lserver4T was sucsessfully updated from Lserver63" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\очистка таблицы фактов FinFactsForA"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="очистка таблицы фактов FinFactsForA"
+      DTS:DTSID="{A8E423D1-B3D7-4833-9CE5-E5083637D05E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="очистка таблицы фактов FinFactsForA"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9931CF9D-A548-48EC-A4BE-5E2BDEF98AD8}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="Declare @BDate char(8), @EDate char(8)&#xA;&#xA;Declare Cur Cursor for &#xA;(Select Convert(char(8), DATEADD(yy,-2000,начПериода), 112), Convert(char(8), DATEADD(dd,1,DATEADD(yy,-2000,конПериода)), 112) from Lserver63.s3_conv_full.dbo.Справочник_ФинПериодыОЛАП where флОбновлять=1)&#xA;open Cur &#xA;FETCH NEXT FROM Cur INTO @BDate, @EDate while @@FETCH_STATUS = 0&#xA;begin&#xA;&#xA;&#x9;Delete from FinFactsForA where period&gt;=@BDate and period &lt;=@EDate&#xA;&#xA;&#x9;FETCH NEXT FROM Cur INTO @BDate, @EDate&#xA;end&#xA;&#xA;close Cur&#xA;deallocate Cur" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Ограничение]"
+      DTS:CreationName=""
+      DTS:DTSID="{D544939F-59DC-4989-9CCD-DDDC0057AAE0}"
+      DTS:From="Package\Обновление статей в OLAP Л-Фото"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Ограничение"
+      DTS:To="Package\очистка таблицы фактов FinFactsForA" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Ограничение 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{561F3FC2-CB51-443C-9E21-F2E1833879C5}"
+      DTS:From="Package\очистка таблицы фактов FinFactsForA"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Ограничение 1"
+      DTS:To="Package\Обновление FinFactsL" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Ограничение 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{10AC471E-B1DA-437C-B19C-FF9E19D0FA1D}"
+      DTS:From="Package\Обновление FinFactsL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Ограничение 2"
+      DTS:To="Package\Задача потока данных" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Ограничение 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{F95E2FDD-BAB6-4F0D-B400-B42A032B56D4}"
+      DTS:From="Package\Задача потока данных"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Ограничение 3"
+      DTS:To="Package\отправить на почту Успешно" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Ограничение 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{E4102AED-51D6-4DF5-B243-83A24452529F}"
+      DTS:From="Package\Обновление FinFactsL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Ограничение 4"
+      DTS:To="Package\отправить на почту Неудачно"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--В данном разделе CDATA содержатся сведения о макете пакета. В данном разделе содержатся сведения о координатах (x,y), ширине и высоте.-->
+<!--В случае возникновения ошибки при редактировании этого раздела вручную его можно удалить. -->
+<!--Пакет можно загрузить обычным образом, но прежние сведения о макете будут утеряны, и конструктор автоматически перераспределит элементы в области конструктора.-->
+<Objects
+  Version="8">
+  <!--Все приведенные ниже узлы будут содержать свойства, не влияющие на поведение среды выполнения.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Задача потока данных"
+          TopLeft="80,352" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Обновление FinFactsL"
+          TopLeft="40,250" />
+        <NodeLayout
+          Size="251,42"
+          Id="Package\Обновление статей в OLAP Л-Фото"
+          TopLeft="31,64" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\отправить на почту Успешно"
+          TopLeft="49,454" />
+        <NodeLayout
+          Size="265,42"
+          Id="Package\очистка таблицы фактов FinFactsForA"
+          TopLeft="39,169" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Ограничение]"
+          TopLeft="156.5,106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15,63"
+              Start="0,0"
+              End="15,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.5"
+                    Point2="0,31.5"
+                    Point3="4,31.5" />
+                  <mssgle:LineSegment
+                    End="11,31.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11,31.5"
+                    Point2="15,31.5"
+                    Point3="15,35.5" />
+                  <mssgle:LineSegment
+                    End="15,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Ограничение 1]"
+          TopLeft="171.5,211">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-38.5,39"
+              Start="0,0"
+              End="-38.5,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.5"
+                    Point2="0,19.5"
+                    Point3="-4,19.5" />
+                  <mssgle:LineSegment
+                    End="-34.5,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-34.5,19.5"
+                    Point2="-38.5,19.5"
+                    Point3="-38.5,23.5" />
+                  <mssgle:LineSegment
+                    End="-38.5,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Ограничение 2]"
+          TopLeft="133,292">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="42,60"
+              Start="0,0"
+              End="42,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="38,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38,30"
+                    Point2="42,30"
+                    Point3="42,34" />
+                  <mssgle:LineSegment
+                    End="42,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Ограничение 3]"
+          TopLeft="175,394">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-23.5,60"
+              Start="0,0"
+              End="-23.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-19.5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-19.5,30"
+                    Point2="-23.5,30"
+                    Point3="-23.5,34" />
+                  <mssgle:LineSegment
+                    End="-23.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="205,42"
+          Id="Package\отправить на почту Неудачно"
+          TopLeft="272,289" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Ограничение 4]"
+          TopLeft="226,271">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="46,39"
+              Start="0,0"
+              End="38.5,39">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="19,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19,0"
+                    Point2="23,0"
+                    Point3="23,4" />
+                  <mssgle:LineSegment
+                    End="23,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23,35"
+                    Point2="23,39"
+                    Point3="27,39" />
+                  <mssgle:LineSegment
+                    End="38.5,39" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="11.20578125,-16.1396484375,23.5884375,10.1396484375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Задача потока данных">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="260,42"
+          Id="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL"
+          TopLeft="96,80" />
+        <NodeLayout
+          Size="239,42"
+          Id="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA"
+          TopLeft="106,214" />
+        <EdgeLayout
+          Id="Package\Задача потока данных.Paths[Выход источника &quot;OLE DB&quot;]"
+          TopLeft="225.75,122">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,92"
+              Start="0,0"
+              End="0,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Задача потока данных\Lserver4t_FinOLAPL_FinFactsForA">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Задача потока данных\Lserver63_s3_conv_full_FinFactsForAL">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

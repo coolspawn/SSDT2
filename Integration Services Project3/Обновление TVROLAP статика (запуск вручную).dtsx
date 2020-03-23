@@ -1,0 +1,1549 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/30/2018 2:53:58 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LSERVER4T"
+  DTS:CreatorName="TERMINAL\1cadmin"
+  DTS:DTSID="{5DA0717C-BF79-4773-9668-46D84E842A63}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.30"
+  DTS:LocaleID="1049"
+  DTS:ObjectName="Обновление TVROLAP статика  запуск вручную"
+  DTS:PackageType="5"
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{D77EDFD2-35D8-4D62-8A56-1D8FAF9F45B1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LSERVER4T.OLAP8.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C6970D0F-CA8E-4785-89D8-FA86540B5FD2}"
+      DTS:ObjectName="LSERVER4T.OLAP8.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LSERVER4T;User ID=sa;Initial Catalog=OLAP8;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAu+hV4kob30KfOq/x4NBzSwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD29NW7PgHE/ngizhowoHSRAAAAAASAAACgAAAAEAAAAGlHLI8SFxldwPlMkB7NVrIYAAAA198uJWPQ9OEU/VrfqhYj25JaL9SBgVnsFAAAAF5vsUW7WwM+hzeTCjD+tXbJ35ol</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Lserver63]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2EB1AE47-9C5C-49E9-BBF1-835A2B3CB4B4}"
+      DTS:ObjectName="Lserver63">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=Lserver63;User ID=sa;Initial Catalog=s3_conv_full;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAu+hV4kob30KfOq/x4NBzSwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACKmciPBGui5lUdbOXUVXzrAAAAAASAAACgAAAAEAAAABBN2L6KKCDxkw0WArPd+2sQAAAANo0rFud2P09geV8oD0IcIxQAAAABl3DBStqpOwzkb1af0e07I/678A</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Lserver63.s3_arhiv.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2E595FEC-0422-4238-9E03-A4B494A40DD8}"
+      DTS:ObjectName="Lserver63.s3_arhiv.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=Lserver63;User ID=sa;Initial Catalog=s3_arhiv;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAu+hV4kob30KfOq/x4NBzSwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACPs47B9nYLu6xc+aU2hOD4AAAAAASAAACgAAAAEAAAAKRiv3oVO0d3MPxEei9+7vIQAAAA1/eI+/PfTb17EdlDLpZbtRQAAABwkKpGB+LBH3Zi2c37fpqEyX1jkA</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[S3]"
+      DTS:CreationName="SMTP"
+      DTS:Description="S3"
+      DTS:DTSID="{07FA9E5B-359E-4E60-8801-C73FEAE31B7C}"
+      DTS:ObjectName="S3">
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=mail.s3.ru;UseWindowsAuthentication=True;EnableSsl=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sales Update Success"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Stock Update Success"
+      DTS:DTSID="{BE56395F-4980-4013-A002-ACDB3683EF1F}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sales Update Success"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{07FA9E5B-359E-4E60-8801-C73FEAE31B7C}"
+          SendMailTask:From="Rassilka1Cv8@s3.ru"
+          SendMailTask:To="1CSupport2@s3.ru"
+          SendMailTask:Subject="TVROLAP Sales STATIC PARTITION"
+          SendMailTask:MessageSource="Successfully CREATED TVROLAP static partition" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transfering from s3_archiv to Sales_Fact"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Задача потока данных"
+      DTS:DTSID="{DAEC8898-CFC1-49E1-89DE-5EC94C255E7A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfering from s3_archiv to Sales_Fact"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Назначение &quot;OLE DB&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;4"
+              description="Назначение &quot;OLE DB&quot;"
+              name="Lserver4t_OLAP8_Sales_Fact"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowset">[dbo].[Sales_Fact]</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Команда SQL для выполнения."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает кодовую страницу столбца, используемую, когда недоступны сведения о кодовой странице из источника данных."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Вызывает безусловное использование значение свойства DefaultCodePage при описании символьных данных."
+                  name="AlwaysUseDefaultCodePage">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает используемый режим доступа к базе данных."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Указывает, должны ли значения в столбцах идентификаторов копироваться в назначение. Если свойство имеет значение false, значения в столбцах идентификаторов будут созданы автоматически в месте назначения. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Указывает, будут ли в назначение вставляться значения NULL для столбцов, содержащих их. Значение false показывает, что если столбец имеет значение NULL, то в назначение будет вставлено его значение по умолчанию. Применяется только в случае, если включена быстрая загрузка."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Задает параметры быстрой загрузки. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Задает, когда выдаются сообщения о фиксации транзакции в ходе вставки данных. Значение 0 задает, что по окончании вставки данных будет выдано одно сообщение о фиксации транзакции. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LSERVER4T.OLAP8.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[LSERVER4T.OLAP8.sa]"
+                  description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;]"
+                  errorOrTruncationOperation="Вставить"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Вход назначения &quot;OLE DB&quot;">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[DATE_TIME_IDDOC]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DATE_TIME_IDDOC"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[DATE_TIME_IDDOC]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[DATE_TIME_IDDOC]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[DATE_SHIP]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DATE_SHIP"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[DATE_SHIP]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[DATE_SHIP]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[SP413]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="SP413"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SP413]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP413]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[SP7182]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="SP7182"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SP7182]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP7182]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[SP423]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="SP423"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SP423]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP423]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[SP424]"
+                      cachedDataType="numeric"
+                      cachedName="SP424"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SP424]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP424]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[SP428]"
+                      cachedDataType="numeric"
+                      cachedName="SP428"
+                      cachedPrecision="38"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SP428]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP428]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[SP1006]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="SP1006"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SP1006]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP1006]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[VidDv]"
+                      cachedDataType="i4"
+                      cachedName="VidDv"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[VidDv]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[VidDv]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Store]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="Store"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Store]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Store]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Office]"
+                      cachedCodepage="1251"
+                      cachedDataType="str"
+                      cachedLength="9"
+                      cachedName="Office"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Office]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Office]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Direction]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="Direction"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Direction]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Direction]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Sebestoimost]"
+                      cachedDataType="numeric"
+                      cachedName="Sebestoimost"
+                      cachedPrecision="38"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Sebestoimost]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Sebestoimost]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[SP11818]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="SP11818"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SP11818]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP11818]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[SP7150]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="SP7150"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SP7150]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP7150]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[MngNSS]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="MngNSS"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[MngNSS]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[MngNSS]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[ProdazyRUR]"
+                      cachedDataType="numeric"
+                      cachedName="ProdazyRUR"
+                      cachedPrecision="38"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[ProdazyRUR]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[ProdazyRUR]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[SebestoimostRUR]"
+                      cachedDataType="numeric"
+                      cachedName="SebestoimostRUR"
+                      cachedPrecision="38"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SebestoimostRUR]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SebestoimostRUR]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[NSS]"
+                      cachedDataType="i4"
+                      cachedName="NSS"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[NSS]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[NSS]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[RegPredst]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="RegPredst"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[RegPredst]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[RegPredst]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Plan_Sales_Calculated]"
+                      cachedDataType="numeric"
+                      cachedName="Plan_Sales_Calculated"
+                      cachedPrecision="19"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Calculated]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Plan_Sales_Calculated]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Plan_Sales_Manager]"
+                      cachedDataType="numeric"
+                      cachedName="Plan_Sales_Manager"
+                      cachedPrecision="19"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Manager]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Plan_Sales_Manager]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Plan_Sales_Channel]"
+                      cachedDataType="numeric"
+                      cachedName="Plan_Sales_Channel"
+                      cachedPrecision="19"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Channel]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Plan_Sales_Channel]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Plan_Sales_Dierctor]"
+                      cachedDataType="numeric"
+                      cachedName="Plan_Sales_Dierctor"
+                      cachedPrecision="19"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Dierctor]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Plan_Sales_Dierctor]" />
+                    <inputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Plan_Sales_Potential]"
+                      cachedDataType="numeric"
+                      cachedName="Plan_Sales_Potential"
+                      cachedPrecision="19"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Potential]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Plan_Sales_Potential]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[DATE_TIME_IDDOC]"
+                      dataType="dbTimeStamp"
+                      name="DATE_TIME_IDDOC" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[DATE_SHIP]"
+                      dataType="dbTimeStamp"
+                      name="DATE_SHIP" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SP413]"
+                      dataType="bytes"
+                      length="16"
+                      name="SP413" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SP7182]"
+                      dataType="bytes"
+                      length="16"
+                      name="SP7182" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SP423]"
+                      dataType="bytes"
+                      length="16"
+                      name="SP423" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SP424]"
+                      dataType="i4"
+                      name="SP424" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SP428]"
+                      dataType="numeric"
+                      name="SP428"
+                      precision="18"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SP1006]"
+                      dataType="bytes"
+                      length="16"
+                      name="SP1006" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[VidDv]"
+                      dataType="i2"
+                      name="VidDv" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Store]"
+                      dataType="bytes"
+                      length="16"
+                      name="Store" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Office]"
+                      codePage="1251"
+                      dataType="str"
+                      length="10"
+                      name="Office" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Direction]"
+                      dataType="bytes"
+                      length="16"
+                      name="Direction" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Sebestoimost]"
+                      dataType="numeric"
+                      name="Sebestoimost"
+                      precision="18"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SP11818]"
+                      dataType="bytes"
+                      length="16"
+                      name="SP11818" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SP7150]"
+                      dataType="bytes"
+                      length="16"
+                      name="SP7150" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[MngNSS]"
+                      dataType="bytes"
+                      length="16"
+                      name="MngNSS" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[ProdazyRUR]"
+                      dataType="numeric"
+                      name="ProdazyRUR"
+                      precision="18"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SebestoimostRUR]"
+                      dataType="numeric"
+                      name="SebestoimostRUR"
+                      precision="18"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[NSS]"
+                      dataType="bool"
+                      name="NSS" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[RegPredst]"
+                      dataType="bytes"
+                      length="16"
+                      name="RegPredst" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Calculated]"
+                      dataType="numeric"
+                      name="Plan_Sales_Calculated"
+                      precision="19"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Manager]"
+                      dataType="numeric"
+                      name="Plan_Sales_Manager"
+                      precision="19"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Channel]"
+                      dataType="numeric"
+                      name="Plan_Sales_Channel"
+                      precision="19"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Dierctor]"
+                      dataType="numeric"
+                      name="Plan_Sales_Dierctor"
+                      precision="19"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Potential]"
+                      dataType="numeric"
+                      name="Plan_Sales_Potential"
+                      precision="19"
+                      scale="5" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Вывод ошибок назначения &quot;OLE DB&quot;"
+                  synchronousInputId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Источник &quot;OLE DB&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;7"
+              description="Источник &quot;OLE DB&quot;"
+              name="Lserver63_s3_archiv"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Команда SQL для выполнения."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">declare @UpdtDate datetime, @EDate datetime
+set @UpdtDate = Convert(datetime,'2017-12-31 23:59:59.000',121)
+
+SELECT 
+	   CAST(LEFT(CONVERT(CHAR(8), DATEADD(YEAR, -2000, туПродажи.Период), 112), 8) AS DATETIME) DATE_TIME_IDDOC, 
+       CAST(ISNULL(LEFT(CONVERT(CHAR(8), DATEADD(YEAR, -2000, РасходнаяНакладная.Дата), 112), 8), LEFT(CONVERT(CHAR(8), DATEADD(YEAR, -2000, туПродажи.Период), 112), 8)) AS DATETIME) DATE_SHIP, 
+       CONVERT(NVARCHAR(32), туПродажи.Контрагент, 2) AS SP413
+       , --Kln 
+       CONVERT(NVARCHAR(32), туПродажи.Менеджер, 2) AS SP7182
+       ,  --Mnd 
+       CONVERT(NVARCHAR(32), туПродажи.Товар, 2) AS SP423
+       , --Tov 
+       SUM(туПродажи.КолВо) SP424
+       , --Kol 
+       SUM(туПродажи.Оборот) SP428
+       ,--Summ 
+       CONVERT(NVARCHAR(32), туПродажи.Автор, 2) AS SP1006
+       , --Avt	  
+       1 VidDv
+       , --_22        
+       CONVERT(NVARCHAR(32), туПродажи.Склад, 2) Store,
+       CASE Склады.База
+           WHEN 1
+           THEN 'Ярмарка'
+           WHEN 2
+           THEN 'Березка'
+           WHEN 4
+           THEN 'Рябина'
+           WHEN 5
+           THEN 'Рябина'
+           WHEN 9
+           THEN 'Горбушка'
+           WHEN 3
+           THEN 'И-Магазин'
+           ELSE 'Прочее'
+       END Office
+       , --_33 
+       CONVERT(NVARCHAR(32), туПродажи.Направление, 2) Direction
+       , --_44     
+       SUM(туПродажи.Сумма) Sebestoimost
+       , --SP8537 
+       CONVERT(NVARCHAR(32), туПродажи.ЦФО, 2) SP11818, 
+       CONVERT(NVARCHAR(32), Товары.ТипТоваров, 2) SP7150
+       , 
+       --добавлено 20-11-2018 
+       '00000000000000000000000000000000' AS MngNSS
+       , --_44     
+       SUM(туПродажи.ОборотРуб) ProdazyRUR, 
+       SUM(туПродажи.СуммаРуб) SebestoimostRUR,
+       CASE КаналыПродаж.Код
+           WHEN 'G0015'
+           THEN 1
+           ELSE 0
+       END NSS, 
+       '00000000000000000000000000000000' AS RegPredst
+       , --_44 
+       MAX(ISNULL(РегистрСведений_КлиентыПланПродаж.СуммаРасчетная, 0)) AS Plan_Sales_Calculated, 
+       MAX(ISNULL(РегистрСведений_КлиентыПланПродаж.[СуммаМенеджер], 0)) AS Plan_Sales_Manager, 
+       MAX(ISNULL(РегистрСведений_КлиентыПланПродаж.[СуммаКанал], 0)) AS Plan_Sales_Channel, 
+       MAX(ISNULL(РегистрСведений_КлиентыПланПродаж.[СуммаДиректор], 0)) AS Plan_Sales_Dierctor, 
+       MAX(ISNULL(РегистрСведений_КлиентыПланПродаж.[СуммаПотенциал], 0)) AS Plan_Sales_Potential
+FROM РегистрНакопления_туПродажи(NOLOCK) туПродажи
+     INNER JOIN Справочник_МестаХранения Склады(NOLOCK) ON Склады.Ссылка = туПродажи.Склад
+     INNER JOIN [dbo].[Справочник_Контрагенты] Справочник_Контрагенты(NOLOCK) ON Справочник_Контрагенты.Ссылка = туПродажи.Контрагент
+     INNER JOIN Справочник_Номенклатура Товары(NOLOCK) ON Товары.Ссылка = туПродажи.Товар
+     LEFT JOIN [dbo].Справочник_ТипыСвойств Справочник_ТипыТовар(NOLOCK) ON Справочник_ТипыТовар.Ссылка = Товары.ТипТоваров
+     LEFT JOIN Справочник_Клиенты Клиенты(NOLOCK) ON Клиенты.Ссылка = туПродажи.Клиент
+     LEFT JOIN Справочник_КаналыПродаж КаналыПродаж(NOLOCK) ON КаналыПродаж.Ссылка = Клиенты.ТекущийКаналПродаж
+     LEFT JOIN Документ_РасходнаяНакладная РасходнаяНакладная(NOLOCK) ON РасходнаяНакладная.Ссылка = туПродажи.ДокПродажи
+     LEFT JOIN [dbo].[РегистрСведений_КлиентыПланПродаж] РегистрСведений_КлиентыПланПродаж(NOLOCK) ON(РегистрСведений_КлиентыПланПродаж.[Клиент] = туПродажи.[Клиент]
+                                                                                                      AND РегистрСведений_КлиентыПланПродаж.[Направление] = туПродажи.Направление
+                                                                                                      AND CAST(РегистрСведений_КлиентыПланПродаж.Период AS DATETIME) = CAST(LEFT(CONVERT(CHAR(8), DATEADD(DAY, 1 - DAY(туПродажи.[Период]), туПродажи.[Период]), 112), 8) AS DATETIME)
+                                                                                                      AND РегистрСведений_КлиентыПланПродаж.ТоварнаяГруппа = Справочник_ТипыТовар.[ТоварнаяГруппа]
+                                                                                                      AND РегистрСведений_КлиентыПланПродаж.Бренд = Товары.Бренд)
+WHERE CONVERT(char(8),DATEADD(YY,-2000,туПродажи.Период),112) &lt;= @UpdtDate
+
+      AND Склады.ВидСклада &lt;&gt; 0xA7C7A872D0A0A6924C9AC05F5DAF35A2
+      AND Товары.Наименование IS NOT NULL --Есть битые ссылки
+
+GROUP BY CAST(LEFT(CONVERT(CHAR(8), DATEADD(YEAR, -2000, туПродажи.Период), 112), 8) AS DATETIME), 
+         ISNULL(LEFT(CONVERT(CHAR(8), DATEADD(YEAR, -2000, РасходнаяНакладная.Дата), 112), 8), LEFT(CONVERT(CHAR(8), DATEADD(YEAR, -2000, туПродажи.Период), 112), 8)), 
+         туПродажи.ДокПродажи, 
+         туПродажи.Контрагент, 
+         туПродажи.Менеджер, 
+         туПродажи.Товар, 
+         туПродажи.ДокПродажи, 
+         туПродажи.Автор, 
+         туПродажи.Склад, 
+         туПродажи.Направление,
+         CASE Склады.База
+             WHEN 1
+             THEN 'Ярмарка'
+             WHEN 2
+             THEN 'Березка'
+             WHEN 4
+             THEN 'Рябина'
+             WHEN 5
+             THEN 'Рябина'
+             WHEN 9
+             THEN 'Горбушка'
+             WHEN 3
+             THEN 'И-Магазин'
+             ELSE 'Прочее'
+         END, 
+         туПродажи.ЦФО, 
+         Товары.ТипТоваров,
+         CASE КаналыПродаж.Код
+             WHEN 'G0015'
+             THEN 1
+             ELSE 0
+         END, 
+         КаналыПродаж.РуководительКанала
+ORDER BY DATE_TIME_IDDOC DESC;</property>
+                <property
+                  dataType="System.String"
+                  description="Переменная, содержащая команду SQL для выполнения."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает кодовую страницу столбца, используемую, когда недоступны сведения о кодовой странице из источника данных."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Вызывает безусловное использование значение свойства DefaultCodePage при описании символьных данных."
+                  name="AlwaysUseDefaultCodePage">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает используемый режим доступа к базе данных."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Сопоставления между параметрами в команде SQL и переменными."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Lserver63.s3_arhiv.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[Lserver63.s3_arhiv.sa]"
+                  description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;]"
+                  name="Выход источника &quot;OLE DB&quot;">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[DATE_TIME_IDDOC]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[DATE_TIME_IDDOC]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[DATE_TIME_IDDOC]"
+                      name="DATE_TIME_IDDOC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[DATE_SHIP]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[DATE_SHIP]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[DATE_SHIP]"
+                      name="DATE_SHIP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP413]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SP413]"
+                      length="16"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP413]"
+                      name="SP413"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP7182]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SP7182]"
+                      length="16"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP7182]"
+                      name="SP7182"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP423]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SP423]"
+                      length="16"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP423]"
+                      name="SP423"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP424]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SP424]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP424]"
+                      name="SP424"
+                      precision="38"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP428]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SP428]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP428]"
+                      name="SP428"
+                      precision="38"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP1006]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SP1006]"
+                      length="16"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP1006]"
+                      name="SP1006"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[VidDv]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[VidDv]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[VidDv]"
+                      name="VidDv"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Store]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Store]"
+                      length="16"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Store]"
+                      name="Store"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Office]"
+                      codePage="1251"
+                      dataType="str"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Office]"
+                      length="9"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Office]"
+                      name="Office"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Direction]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Direction]"
+                      length="16"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Direction]"
+                      name="Direction"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Sebestoimost]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Sebestoimost]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Sebestoimost]"
+                      name="Sebestoimost"
+                      precision="38"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP11818]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SP11818]"
+                      length="16"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP11818]"
+                      name="SP11818"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP7150]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SP7150]"
+                      length="16"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SP7150]"
+                      name="SP7150"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[MngNSS]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[MngNSS]"
+                      length="16"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[MngNSS]"
+                      name="MngNSS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[ProdazyRUR]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[ProdazyRUR]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[ProdazyRUR]"
+                      name="ProdazyRUR"
+                      precision="38"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SebestoimostRUR]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SebestoimostRUR]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[SebestoimostRUR]"
+                      name="SebestoimostRUR"
+                      precision="38"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[NSS]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[NSS]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[NSS]"
+                      name="NSS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[RegPredst]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[RegPredst]"
+                      length="16"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[RegPredst]"
+                      name="RegPredst"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Plan_Sales_Calculated]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Calculated]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Plan_Sales_Calculated]"
+                      name="Plan_Sales_Calculated"
+                      precision="19"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Plan_Sales_Manager]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Manager]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Plan_Sales_Manager]"
+                      name="Plan_Sales_Manager"
+                      precision="19"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Plan_Sales_Channel]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Channel]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Plan_Sales_Channel]"
+                      name="Plan_Sales_Channel"
+                      precision="19"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Plan_Sales_Dierctor]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Dierctor]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Plan_Sales_Dierctor]"
+                      name="Plan_Sales_Dierctor"
+                      precision="19"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Plan_Sales_Potential]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Potential]"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Plan_Sales_Potential]"
+                      name="Plan_Sales_Potential"
+                      precision="19"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[DATE_TIME_IDDOC]"
+                      dataType="dbTimeStamp"
+                      name="DATE_TIME_IDDOC" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[DATE_SHIP]"
+                      dataType="dbTimeStamp"
+                      name="DATE_SHIP" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SP413]"
+                      dataType="wstr"
+                      length="32"
+                      name="SP413" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SP7182]"
+                      dataType="wstr"
+                      length="32"
+                      name="SP7182" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SP423]"
+                      dataType="wstr"
+                      length="32"
+                      name="SP423" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SP424]"
+                      dataType="numeric"
+                      name="SP424"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SP428]"
+                      dataType="numeric"
+                      name="SP428"
+                      precision="38"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SP1006]"
+                      dataType="wstr"
+                      length="32"
+                      name="SP1006" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[VidDv]"
+                      dataType="i4"
+                      name="VidDv" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Store]"
+                      dataType="wstr"
+                      length="32"
+                      name="Store" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Office]"
+                      codePage="1251"
+                      dataType="str"
+                      length="9"
+                      name="Office" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Direction]"
+                      dataType="wstr"
+                      length="32"
+                      name="Direction" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Sebestoimost]"
+                      dataType="numeric"
+                      name="Sebestoimost"
+                      precision="38"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SP11818]"
+                      dataType="wstr"
+                      length="32"
+                      name="SP11818" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SP7150]"
+                      dataType="wstr"
+                      length="32"
+                      name="SP7150" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[MngNSS]"
+                      codePage="1251"
+                      dataType="str"
+                      length="32"
+                      name="MngNSS" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[ProdazyRUR]"
+                      dataType="numeric"
+                      name="ProdazyRUR"
+                      precision="38"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[SebestoimostRUR]"
+                      dataType="numeric"
+                      name="SebestoimostRUR"
+                      precision="38"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[NSS]"
+                      dataType="i4"
+                      name="NSS" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[RegPredst]"
+                      codePage="1251"
+                      dataType="str"
+                      length="32"
+                      name="RegPredst" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Calculated]"
+                      dataType="numeric"
+                      name="Plan_Sales_Calculated"
+                      precision="19"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Manager]"
+                      dataType="numeric"
+                      name="Plan_Sales_Manager"
+                      precision="19"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Channel]"
+                      dataType="numeric"
+                      name="Plan_Sales_Channel"
+                      precision="19"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Dierctor]"
+                      dataType="numeric"
+                      name="Plan_Sales_Dierctor"
+                      precision="19"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Plan_Sales_Potential]"
+                      dataType="numeric"
+                      name="Plan_Sales_Potential"
+                      precision="19"
+                      scale="5" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;]"
+                  isErrorOut="true"
+                  name="Вывод ошибок источника &quot;OLE DB&quot;">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[DATE_TIME_IDDOC]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[DATE_TIME_IDDOC]"
+                      name="DATE_TIME_IDDOC" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[DATE_SHIP]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[DATE_SHIP]"
+                      name="DATE_SHIP" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SP413]"
+                      dataType="wstr"
+                      length="32"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SP413]"
+                      name="SP413" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SP7182]"
+                      dataType="wstr"
+                      length="32"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SP7182]"
+                      name="SP7182" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SP423]"
+                      dataType="wstr"
+                      length="32"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SP423]"
+                      name="SP423" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SP424]"
+                      dataType="numeric"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SP424]"
+                      name="SP424"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SP428]"
+                      dataType="numeric"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SP428]"
+                      name="SP428"
+                      precision="38"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SP1006]"
+                      dataType="wstr"
+                      length="32"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SP1006]"
+                      name="SP1006" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[VidDv]"
+                      dataType="i4"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[VidDv]"
+                      name="VidDv" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Store]"
+                      dataType="wstr"
+                      length="32"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Store]"
+                      name="Store" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Office]"
+                      codePage="1251"
+                      dataType="str"
+                      length="9"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Office]"
+                      name="Office" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Direction]"
+                      dataType="wstr"
+                      length="32"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Direction]"
+                      name="Direction" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Sebestoimost]"
+                      dataType="numeric"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Sebestoimost]"
+                      name="Sebestoimost"
+                      precision="38"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SP11818]"
+                      dataType="wstr"
+                      length="32"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SP11818]"
+                      name="SP11818" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SP7150]"
+                      dataType="wstr"
+                      length="32"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SP7150]"
+                      name="SP7150" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[MngNSS]"
+                      codePage="1251"
+                      dataType="str"
+                      length="32"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[MngNSS]"
+                      name="MngNSS" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ProdazyRUR]"
+                      dataType="numeric"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ProdazyRUR]"
+                      name="ProdazyRUR"
+                      precision="38"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SebestoimostRUR]"
+                      dataType="numeric"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[SebestoimostRUR]"
+                      name="SebestoimostRUR"
+                      precision="38"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[NSS]"
+                      dataType="i4"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[NSS]"
+                      name="NSS" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[RegPredst]"
+                      codePage="1251"
+                      dataType="str"
+                      length="32"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[RegPredst]"
+                      name="RegPredst" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Plan_Sales_Calculated]"
+                      dataType="numeric"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Plan_Sales_Calculated]"
+                      name="Plan_Sales_Calculated"
+                      precision="19"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Plan_Sales_Manager]"
+                      dataType="numeric"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Plan_Sales_Manager]"
+                      name="Plan_Sales_Manager"
+                      precision="19"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Plan_Sales_Channel]"
+                      dataType="numeric"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Plan_Sales_Channel]"
+                      name="Plan_Sales_Channel"
+                      precision="19"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Plan_Sales_Dierctor]"
+                      dataType="numeric"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Plan_Sales_Dierctor]"
+                      name="Plan_Sales_Dierctor"
+                      precision="19"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Plan_Sales_Potential]"
+                      dataType="numeric"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Plan_Sales_Potential]"
+                      name="Plan_Sales_Potential"
+                      precision="19"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Transfering from s3_archiv to Sales_Fact.Paths[Выход источника &quot;OLE DB&quot;]"
+              endId="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact.Inputs[Вход назначения &quot;OLE DB&quot;]"
+              name="Выход источника &quot;OLE DB&quot;"
+              startId="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv.Outputs[Выход источника &quot;OLE DB&quot;]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Обновление товаров"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Обновление товаров"
+      DTS:DTSID="{3CF70EE1-B3F0-42EF-898A-FAEB4627F8E8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Обновление товаров"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C6970D0F-CA8E-4785-89D8-FA86540B5FD2}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="Declare @DateOfUpdate Datetime, @BeginDate Datetime&#xA;SET @DateOfUpdate = dateadd(s,-1,Convert(datetime,'20180101',112))&#xA;SET @BeginDate = Convert(datetime,'20083101',112)&#xA;&#xA;declare @SP7150 binary(16),&#xA;&#x9;@PARENTID binary(16),&#xA;&#x9;@ID binary(16),&#xA;&#x9;@PCODE char(8),&#xA;&#x9;@PDESCR char(100),&#xA;&#x9;@PISFOLDER tinyint,&#xA;&#x9;@PISMARK binary(1),&#xA;&#x9;@PrType char(50),&#xA;&#x9;@PDirectID binary(16),&#xA;&#x9;@PDirectDD char(100),&#xA;&#x9;@BBrand char(30),&#xA;&#x9;@InPrice numeric(15,4),&#xA;&#x9;@BestPrice numeric(15,4),&#xA;        @PCODEPOSTAVSHIK char(50)&#xA;&#xA;declare @SP7150_ binary(16),&#xA;&#x9;@PARENTID_ binary(16),&#xA;&#x9;@ID_ binary(16),&#xA;&#x9;@PCODE_ char(8),&#xA;&#x9;@PDESCR_ char(100),&#xA;&#x9;@PISFOLDER_ tinyint,&#xA;&#x9;@PISMARK_ binary(1),&#xA;&#x9;@PrType_ char(50),&#xA;&#x9;@PDirectID_ binary(16),&#xA;&#x9;@PDirectDD_ char(100),&#xA;&#x9;@BBrand_ char(30),&#xA;&#x9;@InPrice_ numeric(15,4),&#xA;&#x9;@BestPrice_ numeric(15,4),&#xA;&#x9;@PCODEPOSTAVSHIK_ char(50)&#xA;&#xA;Declare @Brand binary(16)&#xA;declare Cur cursor LOCAL STATIC type_warning for&#xA;Select &#xA;&#x9;wares.ТипТоваров&#xA;&#x9;,wares.Товар&#xA;&#x9;,wares.Родитель&#xA;&#x9;,wares.Код&#xA;&#x9;,wares.Наименование&#xA;&#x9;,wares.ЭтоГруппа&#xA;&#x9;,wares.ПометкаУдаления&#xA;&#x9;,wares.ТипыСвойства&#xA;&#x9;,wares.Направление&#xA;&#x9;,wares.НаименованиеНаправление&#xA;&#x9;,wares.Бренд&#xA;&#x9;,wares.ЦенаОптовая&#xA;&#x9;,wares.СпецЦена&#xA;&#x9;,wares.КодПоставщика&#xA;&#x9;from&#xA;&#x9;&#x9;(Select &#xA;&#x9;&#x9;WaresSales.ТипТоваров&#xA;&#x9;&#x9;,WaresSales.Товар&#xA;&#x9;&#x9;,WaresSales.Родитель&#xA;&#x9;&#x9;,WaresSales.Код&#xA;&#x9;&#x9;,WaresSales.Наименование&#xA;&#x9;&#x9;,WaresSales.ЭтоГруппа&#xA;&#x9;&#x9;,WaresSales.ПометкаУдаления&#xA;&#x9;&#x9;,WaresSales.ТипыСвойства&#xA;&#x9;&#x9;,WaresSales.Направление&#xA;&#x9;&#x9;,WaresSales.НаименованиеНаправление&#xA;&#x9;&#x9;,WaresSales.Бренд&#xA;&#x9;&#x9;,WaresSales.ЦенаОптовая&#xA;&#x9;&#x9;,WaresSales.СпецЦена&#xA;&#x9;&#x9;,WaresSales.КодПоставщика&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;From(&#xA;&#x9;&#x9;select  &#xA;&#x9;&#x9;ISNULL(Номенклатура.ТипТоваров,0x00000000000000000000000000000000) as ТипТоваров &#xA;&#x9;&#x9;,[Товар] as Товар &#xA;&#x9;&#x9;, Номенклатура.Родитель as Родитель&#xA;&#x9;&#x9;, Номенклатура.Код as Код&#xA;&#x9;&#x9;, Номенклатура.Наименование as Наименование&#xA;&#x9;&#x9;, CASE WHEN Номенклатура.ЭтоГруппа = 0x01 THEN 2 ELSE 1 END as ЭтоГруппа&#xA;&#x9;&#x9;, Номенклатура.ПометкаУдаления as ПометкаУдаления&#xA;&#x9;&#x9;, ISNULL(ТипыСвойств.Наименование,'Прочее') as ТипыСвойства&#xA;&#x9;&#x9;, ISNULL(Направления.Ссылка,0x00000000000000000000000000000000) as Направление&#xA;&#x9;&#x9;, ISNULL(Направления.Наименование,'Прочее') as НаименованиеНаправление&#xA;&#x9;&#x9;, ISNULL(Бренды.Наименование,'Прочее') as Бренд&#xA;&#x9;&#x9;, ISNULL((SELECT TOP 1 Цена&#xA;&#x9;&#x9;&#x9;FROM LSERVER63.s3_conv_full.dbo.РегистрСведений_ЦеныНоменклатуры&#xA;&#x9;&#x9;&#x9;WHERE Номенклатура = Номенклатура.Ссылка&#xA;&#x9;&#x9;&#x9;AND КатегорияЦены = 0x20202020203443202000000000000000--(SELECT Ссылка FROM LSERVER63.s3_conv_full.dbo.Справочник_КатегорииЦен WHERE Наименование = 'Оптовая') &#xA;&#x9;&#x9;&#x9;AND Период &lt;= DATEADD(YY,2000,@DateOfUpdate)&#xA;&#x9;                                &#xA;&#x9;&#x9;&#x9;ORDER BY Период desc),0) as ЦенаОптовая&#xA;                  &#xA;&#x9;&#x9;, ISNULL((SELECT TOP 1 Цена&#xA;&#x9;&#x9;&#x9;FROM LSERVER63.s3_conv_full.dbo.РегистрСведений_ЦеныНоменклатуры&#xA;&#x9;&#x9;&#x9;WHERE Номенклатура = Номенклатура.Ссылка&#xA;&#x9;&#x9;&#x9;AND КатегорияЦены = 0x20202020204147202000000000000000--(SELECT Ссылка FROM LSERVER63.s3_conv_full.dbo.Справочник_КатегорииЦен WHERE Наименование = 'СпецЦена') &#xA;&#x9;&#x9;&#x9;AND Период &lt;= DATEADD(YY,2000,@DateOfUpdate)&#xA;&#x9;&#x9;&#x9;ORDER BY Период desc),0)   as СпецЦена&#xA;&#x9;&#x9; , ISNULL(Номенклатура.КодПоставщика,'') as КодПоставщика&#xA;&#xA;&#x9;&#x9;from&#xA;&#x9;&#x9;Lserver63.[s3_arhiv].[dbo].[РегистрНакопления_туПродажи_Итоги]&#xA;&#x9;&#x9;LEFT JOIN LSERVER63.s3_arhiv.dbo.Справочник_Номенклатура as Номенклатура  on товар = Номенклатура.Ссылка&#xA;&#x9;&#x9;LEFT JOIN LSERVER63.s3_arhiv.dbo.Справочник_ТипыСвойств as ТипыСвойств ON Номенклатура.ТипТоваров = ТипыСвойств.Ссылка  --ТипыСвойств&#xA;&#x9;&#x9;LEFT JOIN LSERVER63.s3_arhiv.dbo.Справочник_Направления as Направления ON ТипыСвойств.Направление = Направления.Ссылка  --Направления&#xA;&#x9;&#x9;LEFT JOIN LSERVER63.s3_arhiv.dbo.Справочник_Бренды as Бренды ON Номенклатура.Бренд = Бренды.Ссылка  --Бренды&#xA;&#x9;&#x9;where   Период &lt;= DATEADD(YY,2000,@DateOfUpdate)  AND Период &gt;= DATEADD(YY,2000,@BeginDate)) as WaresSales&#xA;&#x9;&#x9;group by&#xA;&#x9;&#x9;WaresSales.ТипТоваров&#xA;&#x9;&#x9;,WaresSales.Товар&#xA;&#x9;&#x9;,WaresSales.Родитель&#xA;&#x9;&#x9;,WaresSales.Код&#xA;&#x9;&#x9;,WaresSales.Наименование&#xA;&#x9;&#x9;,WaresSales.ЭтоГруппа&#xA;&#x9;&#x9;,WaresSales.ПометкаУдаления&#xA;&#x9;&#x9;,WaresSales.ТипыСвойства&#xA;&#x9;&#x9;,WaresSales.Направление&#xA;&#x9;&#x9;,WaresSales.НаименованиеНаправление&#xA;&#x9;&#x9;,WaresSales.Бренд&#xA;&#x9;&#x9;,WaresSales.ЦенаОптовая&#xA;&#x9;&#x9;,WaresSales.СпецЦена&#xA;&#x9;&#x9;,WaresSales.КодПоставщика&#xA;&#xA;&#x9;union &#xA;&#xA;&#x9;Select &#xA;&#x9;&#x9;WaresStock.ТипТоваров&#xA;&#x9;&#x9;,WaresStock.Товар&#xA;&#x9;&#x9;,WaresStock.Родитель&#xA;&#x9;&#x9;,WaresStock.Код&#xA;&#x9;&#x9;,WaresStock.Наименование&#xA;&#x9;&#x9;,WaresStock.ЭтоГруппа&#xA;&#x9;&#x9;,WaresStock.ПометкаУдаления&#xA;&#x9;&#x9;,WaresStock.ТипыСвойств&#xA;&#x9;&#x9;,WaresStock.Направления&#xA;&#x9;&#x9;,WaresStock.НаправленияНаименование&#xA;&#x9;&#x9;,WaresStock.Бренд&#xA;&#x9;&#x9;,WaresStock.Оптовая&#xA;&#x9;&#x9;,WaresStock.СпецЦена&#xA;&#x9;&#x9;,WaresStock.КодПоставщика&#xA;&#xA;&#x9;from &#xA;&#x9;&#x9;(select &#xA;&#x9;&#x9;ISNULL(Номенклатура.ТипТоваров,0x00000000000000000000000000000000) as ТипТоваров&#xA;&#x9;&#x9;,Товар as Товар&#xA;&#x9;&#x9;, Номенклатура.Родитель as Родитель&#xA;&#x9;&#x9;, Номенклатура.Код as Код&#xA;&#x9;&#x9;, Номенклатура.Наименование as Наименование &#xA;&#x9;&#x9;, CASE WHEN Номенклатура.ЭтоГруппа = 0x01 THEN 2 ELSE 1 END as ЭтоГруппа&#xA;&#x9;&#x9;, Номенклатура.ПометкаУдаления as ПометкаУдаления&#xA;&#x9;&#x9;, ISNULL(ТипыСвойств.Наименование,'Прочее') as ТипыСвойств&#xA;&#x9;&#x9;, ISNULL(Направления.Ссылка,0x00000000000000000000000000000000) as Направления&#xA;&#x9;&#x9;, ISNULL(Направления.Наименование,'Прочее') as НаправленияНаименование&#xA;&#x9;&#x9;, ISNULL(Бренды.Наименование,'Прочее') as Бренд&#xA;&#x9;&#x9;, ISNULL((SELECT TOP 1 Цена&#xA;&#x9;&#x9;&#x9;FROM LSERVER63.s3_conv_full.dbo.РегистрСведений_ЦеныНоменклатуры&#xA;&#x9;&#x9;&#x9;WHERE Номенклатура = Номенклатура.Ссылка&#xA;&#x9;&#x9;&#x9;AND КатегорияЦены = 0x20202020203443202000000000000000--(SELECT Ссылка FROM LSERVER63.s3_conv_full.dbo.Справочник_КатегорииЦен WHERE Наименование = 'Оптовая') &#xA;&#x9;&#x9;&#x9;AND Период &lt;=DATEADD(YY,2000,@DateOfUpdate)                                &#xA;&#x9;&#x9;&#x9;ORDER BY Период desc),0) as Оптовая &#xA;                  &#xA;&#x9;&#x9;, ISNULL((SELECT TOP 1 Цена&#xA;&#x9;&#x9;&#x9;FROM LSERVER63.s3_conv_full.dbo.РегистрСведений_ЦеныНоменклатуры&#xA;&#x9;&#x9;&#x9;WHERE Номенклатура = Номенклатура.Ссылка&#xA;&#x9;&#x9;&#x9;AND КатегорияЦены = 0x20202020204147202000000000000000--(SELECT Ссылка FROM LSERVER63.s3_conv_full.dbo.Справочник_КатегорииЦен WHERE Наименование = 'СпецЦена') &#xA;&#x9;&#x9;&#x9;AND Период &lt;= DATEADD(YY,2000,@DateOfUpdate)                                &#xA;&#xA;&#x9;&#x9;&#x9;ORDER BY Период desc),0)  as СпецЦена &#xA;&#x9;&#x9; , ISNULL(Номенклатура.КодПоставщика,'') as КодПоставщика&#xA;&#xA;&#x9;&#x9;from&#xA;&#x9;&#x9;LSERVER63.[s3_arhiv].[dbo].[РегистрНакопления_туОстатки_Итоги]&#xA;&#x9;&#x9;LEFT JOIN LSERVER63.s3_arhiv.dbo.Справочник_Номенклатура as Номенклатура  on товар = Номенклатура.Ссылка&#xA;&#x9;&#x9;LEFT JOIN LSERVER63.s3_arhiv.dbo.Справочник_ТипыСвойств as ТипыСвойств ON Номенклатура.ТипТоваров = ТипыСвойств.Ссылка  --ТипыСвойств&#xA;&#x9;&#x9;LEFT JOIN LSERVER63.s3_arhiv.dbo.Справочник_Направления as Направления ON ТипыСвойств.Направление = Направления.Ссылка  --Направления&#xA;&#x9;&#x9;LEFT JOIN LSERVER63.s3_arhiv.dbo.Справочник_Бренды as Бренды ON Номенклатура.Бренд = Бренды.Ссылка ) as WaresStock&#xA;&#xA;&#x9;&#x9;GROUP BY &#xA;&#x9;&#x9;WaresStock.ТипТоваров&#xA;&#x9;&#x9;,WaresStock.Товар&#xA;&#x9;&#x9;,WaresStock.Родитель&#xA;&#x9;&#x9;,WaresStock.Код&#xA;&#x9;&#x9;,WaresStock.Наименование&#xA;&#x9;&#x9;,WaresStock.ЭтоГруппа&#xA;&#x9;&#x9;,WaresStock.ПометкаУдаления&#xA;&#x9;&#x9;,WaresStock.ТипыСвойств&#xA;&#x9;&#x9;,WaresStock.Направления&#xA;&#x9;&#x9;,WaresStock.НаправленияНаименование&#xA;&#x9;&#x9;,WaresStock.Бренд&#xA;&#x9;&#x9;,WaresStock.Оптовая&#xA;&#x9;&#x9;,WaresStock.СпецЦена&#xA;&#x9;&#x9;,WaresStock.КодПоставщика&#xA;&#xA;&#x9;UNION&#xA;&#xA;&#x9;select &#xA;&#x9;0x00000000000000000000000000000000&#xA;&#x9;, Номенклатура.Ссылка&#xA;&#x9;, Номенклатура.Родитель&#xA;&#x9;, Номенклатура.Код&#xA;&#x9;, Номенклатура.Наименование&#xA;&#x9;, 1 &#xA;&#x9;, Номенклатура.ПометкаУдаления&#xA;&#x9;, 0x00000000000000000000000000000000&#xA;&#x9;, 0x00000000000000000000000000000000&#xA;&#x9;, 0x00000000000000000000000000000000&#xA;&#x9;, 0x00000000000000000000000000000000 as Brand&#xA;&#x9;, 0             &#xA;&#x9;, 0   &#xA;&#x9;, ''&#xA;&#x9;from&#xA;&#x9;LSERVER63.s3_arhiv.dbo.Справочник_Номенклатура as Номенклатура&#xA;&#x9;where Номенклатура.ЭтоГруппа = 0x00 ) as wares&#xA;&#xA;where ISNULL(Родитель,0x00000000000000000000000000000000) &lt;&gt; 0x00000000000000000000000000000000&#xA;group by&#xA; wares.ТипТоваров&#xA;,wares.Товар&#xA;,wares.Родитель&#xA;,wares.Код&#xA;,wares.Наименование&#xA;,wares.ЭтоГруппа&#xA;,wares.ПометкаУдаления&#xA;,wares.ТипыСвойства&#xA;,wares.Направление&#xA;,wares.НаименованиеНаправление&#xA;,wares.Бренд&#xA;,wares.ЦенаОптовая&#xA;,wares.СпецЦена&#xA;,wares.КодПоставщика&#xA;&#xA;open Cur&#xA;FETCH NEXT FROM Cur INTO @SP7150, @ID, @PARENTID, @PCODE, @PDESCR, @PISFOLDER, @PISMARK, @PrType, @PDirectID, @PDirectDD, @BBrand, @InPrice, @BestPrice, @PCODEPOSTAVSHIK&#xA;while @@FETCH_STATUS = 0&#xA;begin&#xA;   if exists (select [ID] from OLAP8.dbo.Products where [ID] = @ID)&#xA;   begin&#xA;    select @SP7150_ = SP7150, @PARENTID_ = PARENTID, @PCODE_ = CODE, @PDESCR_ = DESCR, @PISFOLDER_ = ISFOLDER,&#xA;           @PISMARK_ = ISMARK, @PrType_ = PrType, @PDirectID_ = DirectID, @PDirectDD_ = DirectDD, @BBrand_ = Brand, @InPrice_ = InPrice, @BestPrice_ = BestPrice, @PCODEPOSTAVSHIK_ = CODEPOSTAVSHIK&#xA;     from OLAP8.dbo.Products where [ID] = @ID&#xA;     if (@SP7150 &lt;&gt; @SP7150_)&#xA;     or (@PARENTID &lt;&gt; @PARENTID_)&#xA;     or (@PCODE &lt;&gt; @PCODE_) &#xA;     or (@PDESCR &lt;&gt; @PDESCR_) &#xA;     or (@PISFOLDER &lt;&gt; @PISFOLDER_) &#xA;     or (@PISMARK &lt;&gt; @PISMARK_) &#xA;     or (@PrType &lt;&gt; @PrType_) &#xA;     or (@PDirectID &lt;&gt; @PDirectID_) &#xA;     or (@PDirectDD &lt;&gt; @PDirectDD_) &#xA;     or (@BBrand &lt;&gt; @BBrand_) &#xA;     or (@InPrice &lt;&gt; @InPrice_) &#xA;     or (@BestPrice &lt;&gt; @BestPrice_) &#xA;     or (@PCODEPOSTAVSHIK &lt;&gt; @PCODEPOSTAVSHIK_) begin&#xA;       update OLAP8.dbo.Products set&#xA;&#x9;SP7150   = @SP7150,&#xA;&#x9;PARENTID = @PARENTID,&#xA;&#x9;CODE     = @PCODE,&#xA;&#x9;DESCR    = @PDESCR,&#xA;&#x9;ISFOLDER = @PISFOLDER,&#xA;&#x9;ISMARK   = @PISMARK,&#xA;&#x9;PrType   = @PrType,&#xA;&#x9;DirectID = @PDirectID,&#xA;&#x9;DirectDD = @PDirectDD,&#xA;&#x9;Brand    = @BBrand,&#xA;&#x9;InPrice  = @InPrice,&#xA;&#x9;BestPrice= @BestPrice,&#xA;&#x9;CODEPOSTAVSHIK=@PCODEPOSTAVSHIK&#xA;       where ID = @ID&#xA;     end&#xA;   end&#xA;   else begin&#xA;     insert into OLAP8.dbo.Products (SP7150, [ID], PARENTID, CODE, DESCR, ISFOLDER, ISMARK, PrType, DirectID, DirectDD, Brand, InPrice, BestPrice, CODEPOSTAVSHIK)&#xA;&#x9;values (@SP7150, @ID, @PARENTID, @PCODE, @PDESCR, @PISFOLDER, @PISMARK, @PrType, @PDirectID, @PDirectDD, @BBrand, @InPrice, @BestPrice, @PCODEPOSTAVSHIK)&#xA;   end&#xA;   FETCH NEXT FROM Cur INTO @SP7150, @ID, @PARENTID, @PCODE, @PDESCR, @PISFOLDER, @PISMARK, @PrType, @PDirectID, @PDirectDD, @BBrand, @InPrice, @BestPrice, @PCODEPOSTAVSHIK&#xA;end&#xA;&#xA;close Cur&#xA;deallocate Cur" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Очистка Sales_Fact"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Очистка Sales_Fact"
+      DTS:DTSID="{51833130-E897-4962-BDFD-AB99ACF64011}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Очистка Sales_Fact"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C6970D0F-CA8E-4785-89D8-FA86540B5FD2}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="Truncate table Sales_Fact" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Ограничение]"
+      DTS:CreationName=""
+      DTS:DTSID="{959DB2CF-DDD4-4710-BDAE-070385039C83}"
+      DTS:From="Package\Обновление товаров"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Ограничение"
+      DTS:To="Package\Очистка Sales_Fact" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Ограничение 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{4608E8DB-AF24-4E59-83D7-781D4B4BEA54}"
+      DTS:From="Package\Очистка Sales_Fact"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Ограничение 3"
+      DTS:To="Package\Transfering from s3_archiv to Sales_Fact" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Ограничение 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{C651230B-810F-4DC6-9F23-57A8453C8019}"
+      DTS:From="Package\Transfering from s3_archiv to Sales_Fact"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Ограничение 5"
+      DTS:To="Package\Sales Update Success" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--В данном разделе CDATA содержатся сведения о макете пакета. В данном разделе содержатся сведения о координатах (x,y), ширине и высоте.-->
+<!--В случае возникновения ошибки при редактировании этого раздела вручную его можно удалить. -->
+<!--Пакет можно загрузить обычным образом, но прежние сведения о макете будут утеряны, и конструктор автоматически перераспределит элементы в области конструктора.-->
+<Objects
+  Version="8">
+  <!--Все приведенные ниже узлы будут содержать свойства, не влияющие на поведение среды выполнения.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Sales Update Success"
+          TopLeft="367,333" />
+        <NodeLayout
+          Size="271,42"
+          Id="Package\Transfering from s3_archiv to Sales_Fact"
+          TopLeft="352,184" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Обновление товаров"
+          TopLeft="264.5,0.5" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Очистка Sales_Fact"
+          TopLeft="186,93" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Ограничение]"
+          TopLeft="355.5,42.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-83.5,50.5"
+              Start="0,0"
+              End="-83.5,43">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.25"
+                    Point2="0,25.25"
+                    Point3="-4,25.25" />
+                  <mssgle:LineSegment
+                    End="-79.5,25.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-79.5,25.25"
+                    Point2="-83.5,25.25"
+                    Point3="-83.5,29.25" />
+                  <mssgle:LineSegment
+                    End="-83.5,43" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Ограничение 3]"
+          TopLeft="272,135">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="215.5,49"
+              Start="0,0"
+              End="215.5,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.5"
+                    Point2="0,24.5"
+                    Point3="4,24.5" />
+                  <mssgle:LineSegment
+                    End="211.5,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="211.5,24.5"
+                    Point2="215.5,24.5"
+                    Point3="215.5,28.5" />
+                  <mssgle:LineSegment
+                    End="215.5,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Ограничение 5]"
+          TopLeft="487.5,226">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-30.5,107"
+              Start="0,0"
+              End="-30.5,99.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,49.5"
+                    Point2="0,53.5"
+                    Point3="-4,53.5" />
+                  <mssgle:LineSegment
+                    End="-26.5,53.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-26.5,53.5"
+                    Point2="-30.5,53.5"
+                    Point3="-30.5,57.5" />
+                  <mssgle:LineSegment
+                    End="-30.5,99.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Transfering from s3_archiv to Sales_Fact">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact"
+          TopLeft="91.5,135.5" />
+        <EdgeLayout
+          Id="Package\Transfering from s3_archiv to Sales_Fact.Paths[Выход источника &quot;OLE DB&quot;]"
+          TopLeft="93,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="106,88"
+              Start="0,0"
+              End="106,80.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40"
+                    Point2="0,44"
+                    Point3="4,44" />
+                  <mssgle:LineSegment
+                    End="102,44" />
+                  <mssgle:CubicBezierSegment
+                    Point1="102,44"
+                    Point2="106,44"
+                    Point3="106,48" />
+                  <mssgle:LineSegment
+                    End="106,80.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfering from s3_archiv to Sales_Fact\Lserver4t_OLAP8_Sales_Fact">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfering from s3_archiv to Sales_Fact\Lserver63_s3_archiv">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

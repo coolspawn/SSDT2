@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Processing TRVOLAP", "Integration Services Project3\Processing TRVOLAP.dtproj", "{E7D95544-542C-42EF-A394-2B37F55A20F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7D95544-542C-42EF-A394-2B37F55A20F9}.Development|Default.ActiveCfg = Development
+		{E7D95544-542C-42EF-A394-2B37F55A20F9}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0ACB5039-3C3E-4CC6-A27C-E3990C82F832}
+	EndGlobalSection
+EndGlobal
